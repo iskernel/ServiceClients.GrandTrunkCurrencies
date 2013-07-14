@@ -165,7 +165,7 @@ namespace IsKernel.Api.Pool.Currency
 								   + OPTION_SEPARATOR + toCode;
 			}
 			RestResponse response = (RestResponse)_client.Execute(request);
-			double result = Double.Parse(response.Content);
+			decimal result = Decimal.Parse(response.Content);
 			ConversionRate conversioNRate = new ConversionRate(fromCode, toCode, 
 			                                                   result, date);
 			return conversioNRate;
@@ -213,8 +213,8 @@ namespace IsKernel.Api.Pool.Currency
 								= element.Split(RANGE_SEPARATOR.ToCharArray());
 							DateTime date 
 								= DateTime.Parse(dateAndRateElements[DATE_INDEX]);
-							double rate 
-								= Double.Parse(dateAndRateElements[RATE_INDEX]);
+							decimal rate 
+								= Decimal.Parse(dateAndRateElements[RATE_INDEX]);
 							ConversionRate conversionRate
 								= new ConversionRate(fromCode, toCode, rate, date);
 							conversionRates.Add(conversionRate);

@@ -12,8 +12,8 @@ namespace IsKernel.Api.Pool.Currency.Tests
 		private const string DEFAULT_FROM_CURRENCY = "USD";
 		private const string DEFAULT_TO_CURRENCY = "AUD";
 		private const string OTHER_CURRENCY = "EUR";
-		private	const double DEFAULT_RATE = 1.00;
-		private	const double OTHER_RATE = 2.00;
+		private	const decimal DEFAULT_RATE = 1.00M;
+		private	const decimal OTHER_RATE = 2.00M;
 		private readonly DateTime DEFAULT_DATE 
 			= new DateTime(1990,5,18, 0,0,0);
 		private readonly DateTime DEFAULT_DATE_PLUS_ONE_HOUR 

@@ -9,11 +9,11 @@ namespace IsKernel.Api.Pool.Currency
 	{
 		private string _fromCurrency;		
 		private string _toCurrency;		
-		private double _rate;	
+		private decimal _rate;	
 		private readonly DateTime _date;
 				
 		public ConversionRate(string fromCurrency, string toCurrency, 
-		                      double rate, DateTime? date)
+		                      decimal rate, DateTime? date)
 		{
 			_fromCurrency = fromCurrency;
 			_toCurrency = toCurrency;
@@ -29,13 +29,13 @@ namespace IsKernel.Api.Pool.Currency
 		}
 		
 		public ConversionRate(string fromCurrency, string toCurrency,
-		                      double rate) 
+		                      decimal rate) 
 			: this(fromCurrency, toCurrency, rate, DateTime.Today)
 		{
 					
 		}
 		
-		public double Rate 
+		public decimal Rate 
 		{
 			get { return _rate; }
 		}
