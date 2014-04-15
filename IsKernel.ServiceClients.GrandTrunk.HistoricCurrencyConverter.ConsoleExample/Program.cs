@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using IsKernel.Api.Pool.Currency;
+using IsKernel.ServiceClients.GrandTrunk.HistoricCurrencyConverter.Clients.Abstract;
+using IsKernel.ServiceClients.GrandTrunk.HistoricCurrencyConverter.Clients.Concrete;
+using IsKernel.ServiceClients.GrandTrunk.HistoricCurrencyConverter.Contracts;
 
-namespace GrandTrunkCurrenciesApiExample
+namespace IsKernel.ServiceClients.GrandTrunk.HistoricCurrencyConverter.ConsoleExample
 {
 	class Program
 	{		
@@ -12,25 +14,24 @@ namespace GrandTrunkCurrenciesApiExample
 			DateTime startDate = new DateTime(2011,3,1);
 			DateTime stopDate  = new DateTime(2011,5,1);
 			
+			IGrandTrunkCurrencyConversionService service 
+				= new GrandTrunkCurrencyConversionService();
+			
 			//List of supported currencies at this momment
 			Console.WriteLine("List of supported currencies at this moment: ");		
 			List<string> listOfCurrencies
-				= GrandTrunkCurrencyConversionService
-				 .Instance.GetListOfSupportedCurrencies();
+			=  service.GetListOfSupportedCurrenciesAsync().Result;
 			DisplayList(listOfCurrencies);
 			
 			//List of supported currencies in 01-03-1997
 			Console.WriteLine("List of supported currencies in 01-03-1997: ");
 			List<string> olderListOfCurrencies
-				= GrandTrunkCurrencyConversionService
-				 .Instance.GetListOfSupportedCurrencies(olderDate);
+			= service.GetListOfSupportedCurrenciesAsync(olderDate).Result;
 			DisplayList(olderListOfCurrencies);
 			
 			//The USD (US Dollar) - AUD (Australian Dollar) rate today
 			Console.WriteLine("The USD-AUD rate today");
-			ConversionRate usdToAud = GrandTrunkCurrencyConversionService
-									  .Instance
-									  .GetConversionRate("USD","AUD");
+			ConversionRate usdToAud = service.GetConversionRateAsync("USD", "AUD").Result;
 			Console.WriteLine("In {0} : 1 {1} = {3} {2}",
 			                  usdToAud.Date, 
 			                  usdToAud.FromCurrency,
@@ -39,10 +40,7 @@ namespace GrandTrunkCurrenciesApiExample
 			
 			//The USD (US Dollar) - AUD (Australian Dollar) rate in 01-03-1997
 			Console.WriteLine("The USD-AUD rate in 01-03-1997");
-			ConversionRate olderUsdToAud = GrandTrunkCurrencyConversionService
-										  .Instance
-									  	  .GetConversionRate("USD","AUD", 
-				                   							 olderDate);
+			ConversionRate olderUsdToAud = service.GetConversionRateAsync("USD", "AUD", olderDate).Result;
 			Console.WriteLine("In {0} : 1 {1} = {3} {2}",
 			                  olderUsdToAud.Date, 
 			                  olderUsdToAud.FromCurrency,
@@ -54,8 +52,7 @@ namespace GrandTrunkCurrenciesApiExample
 			Console.WriteLine("The USD-AUD rate between 01-03-2011 and " +
 			                  "01-05-2011");
 			List<ConversionRate> conversionRateList
-				= GrandTrunkCurrencyConversionService.Instance
-			  	  .GetConversionRate("USD","AUD", startDate, stopDate);
+				=  service.GetConversionRateAsync("USD", "AUD", startDate, stopDate).Result;
 			DisplayConversionList(conversionRateList);
 			
 			Console.Read();

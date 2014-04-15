@@ -5,8 +5,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>IsKernel.Api.GrandTrunkCurrencies</RootNamespace>
-    <AssemblyName>GrandTrunkCurrenciesApi</AssemblyName>
+    <RootNamespace>IsKernel.ServiceClients.GrandTrunk.HistoricCurrencyConverter</RootNamespace>
+    <AssemblyName>IsKernel.ServiceClients.GrandTrunk.HistoricCurrencyConverter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <NoWin32Manifest>False</NoWin32Manifest>
@@ -44,13 +44,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Currency\ConversionRate.cs" />
-    <Compile Include="Currency\CurrencyConversionException.cs" />
-    <Compile Include="Currency\GrandTrunkCurrencyConversionService.cs" />
+    <Compile Include="Clients\Abstract\IGrandTrunkCurrencyConversionService.cs" />
+    <Compile Include="Clients\Concrete\GrandTrunkCurrencyConversionService.cs" />
+    <Compile Include="Contracts\ConversionRate.cs" />
+    <Compile Include="Exceptions\HistoricCurrencyConverterException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Currency" />
+    <Folder Include="Clients\Abstract" />
+    <Folder Include="Clients\Concrete" />
+    <Folder Include="Clients" />
+    <Folder Include="Exceptions" />
+    <Folder Include="Contracts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="License.txt" />

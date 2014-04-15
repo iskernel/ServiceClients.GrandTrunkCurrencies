@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
-    <ProjectGuid>{AD1A1692-AC62-414F-B837-7090FCAB983B}</ProjectGuid>
+    <ProjectGuid>{C6C6B9AF-48FC-45B4-BCBD-DAADF40BD8EE}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>GrandTrunkCurrenciesApiExample</RootNamespace>
-    <AssemblyName>GrandTrunkCurrenciesApiExample</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>IsKernel.ServiceClients.GrandTrunk.HistoricCurrencyConverter.Tests</RootNamespace>
+    <AssemblyName>IsKernel.ServiceClients.GrandTrunk.HistoricCurrencyConverter.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
+    <NoWin32Manifest>False</NoWin32Manifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <Prefer32Bit>True</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -31,12 +31,11 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml" />
@@ -45,16 +44,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="GrandTrunkCurrencyConversionServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="License.txt" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GrandTrunkCurrenciesApi\GrandTrunkCurrenciesApi.csproj">
+    <ProjectReference Include="..\IsKernel.ServiceClients.GrandTrunk.HistoricCurrencyConverter\IsKernel.ServiceClients.GrandTrunk.HistoricCurrencyConverter.csproj">
       <Project>{D6573400-3EB1-4C0D-AE5E-AA9651D2A891}</Project>
-      <Name>GrandTrunkCurrenciesApi</Name>
+      <Name>IsKernel.ServiceClients.GrandTrunk.HistoricCurrencyConverter</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
