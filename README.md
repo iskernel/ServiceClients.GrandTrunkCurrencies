@@ -1,4 +1,4 @@
-grandtrunk-currencies-api
+ServiceClients.GrandTrunkCurrencies
 =========================
 
 C# API for the http://currencies.apps.grandtrunk.net/ web service. 
